@@ -10,7 +10,7 @@ function FeedbackList() {
   }, []);
 
   const fetchFeedback = async () => {
-    const res = await axios.get("http://localhost:5000/api/feedback");
+    const res = await axios.get("https://student-portal-bxjv.onrender.com");
     setData(res.data);
   };
 

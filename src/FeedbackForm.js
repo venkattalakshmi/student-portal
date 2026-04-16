@@ -9,7 +9,7 @@ function FeedbackForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post("https://student-portal-backend.onrender.com/api", {
+    await axios.post("https://student-portal-bxjv.onrender.com", {
       name,
       message,
     });

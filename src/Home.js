@@ -12,7 +12,7 @@ function Home() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/feedback", {
+      await axios.post("https://student-portal-bxjv.onrender.com", {
         name,
         message
       });

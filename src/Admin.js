@@ -17,7 +17,7 @@ function Admin() {
 
   // 📡 Fetch feedbacks
   useEffect(() => {
-    axios.get("http://localhost:5000/api/feedback")
+    axios.get("https://student-portal-bxjv.onrender.com")
       .then((res) => {
         setFeedbacks(res.data);
         setLoading(false);
