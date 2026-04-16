@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+const handleSubmit = async () => {
+  if (!name || !message) {
+    alert("Please fill all fields");
+    return;
+  }
 
   try {
-    await axios.post(
-      "https://student-portal-backend.onrender.com/api/feedback",
-      {
-        name,
-        message,
-      }
-    );
+    await axios.post("/api/feedback", {
+      name,
+      message
+    });
 
+    alert("Feedback submitted ✅");
     setName("");
     setMessage("");
-    alert("Feedback submitted ✅");
   } catch (error) {
-    console.error(error);
+    console.log(error);
     alert("Error submitting feedback ❌");
   }
 };
-
 export default FeedbackForm;
