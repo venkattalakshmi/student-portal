@@ -7,7 +7,7 @@ const handleSubmit = async (e) => {
 
   try {
     await axios.post(
-      "https://YOUR-BACKEND-NAME.onrender.com/api/feedback",
+      "https://student-portal-backend.onrender.com/api/feedback",
       {
         name,
         message,
