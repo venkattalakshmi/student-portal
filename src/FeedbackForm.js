@@ -22,4 +22,4 @@ const handleSubmit = async () => {
     alert("Error submitting feedback ❌");
   }
 };
-export default FeedbackForm;
+
