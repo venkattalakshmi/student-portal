@@ -2,41 +2,25 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 
-function FeedbackForm() {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    await axios.post("https://student-portal-bxjv.onrender.com", {
-      name,
-      message,
-    });
+  try {
+    await axios.post(
+      "https://YOUR-BACKEND-NAME.onrender.com/api/feedback",
+      {
+        name,
+        message,
+      }
+    );
 
     setName("");
     setMessage("");
     alert("Feedback submitted ✅");
-  };
-
-  return (
-    <form className="form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <textarea
-        placeholder="Enter feedback"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        required
-      />
-      <button type="submit">Submit</button>
-    </form>
-  );
-}
+  } catch (error) {
+    console.error(error);
+    alert("Error submitting feedback ❌");
+  }
+};
 
 export default FeedbackForm;
