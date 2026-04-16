@@ -2,24 +2,49 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 
-const handleSubmit = async () => {
-  if (!name || !message) {
-    alert("Please fill all fields");
-    return;
-  }
+function FeedbackForm() {
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
-  try {
-    await axios.post("/api/feedback", {
-      name,
-      message
-    });
+  const handleSubmit = async () => {
+    if (!name || !message) {
+      alert("Please fill all fields");
+      return;
+    }
 
-    alert("Feedback submitted ✅");
-    setName("");
-    setMessage("");
-  } catch (error) {
-    console.log(error);
-    alert("Error submitting feedback ❌");
-  }
-};
+    try {
+      await axios.post("/api/feedback", {
+        name,
+        message
+      });
 
+      alert("Feedback submitted ✅");
+      setName("");
+      setMessage("");
+    } catch (error) {
+      console.log(error);
+      alert("Error submitting feedback ❌");
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <textarea
+        placeholder="Enter feedback"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+export default FeedbackForm;
